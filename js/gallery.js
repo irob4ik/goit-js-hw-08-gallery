@@ -62,7 +62,7 @@ function setImgAttributes(source, alt, index) {
 }
 
 function closeModal() {
-    window.removeEventListener('keydown', onEscKeyPress);
+    window.removeEventListener('keydown', onKeyPress);
     const galleryLightbox = document.querySelector('.js-lightbox');
     const refreshContent = document.querySelector('.lightbox__image');
     
