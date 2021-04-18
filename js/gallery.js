@@ -5,6 +5,7 @@ const closeModalBtn = document.querySelector('[data-action="close-lightbox"]');
 const overlay = document.querySelector('.lightbox__overlay');
 const galleryLightbox = document.querySelector('.js-lightbox');
 const modalImage = document.querySelector('.lightbox__image');
+const galleryArray = document.querySelectorAll('.gallery__image')
 const galleryMarkup = createGallery(galleryItems);
 
 galleryContainer.insertAdjacentHTML('beforeend', galleryMarkup);
@@ -64,8 +65,7 @@ function closeModal() {
     window.removeEventListener('keydown', onKeyPress);
     
     galleryLightbox.classList.remove('is-open');
-    modalImage.setAttribute('src', "#");
-    modalImage.setAttribute('alt', "#");
+    setImgAttributes("#", "#", "#");
 }
 
 function overlayOnClick(evt) {
@@ -105,10 +105,9 @@ function onKeyPress(evt) {
 }
 
 function slideToNewImage(index) {
-    const newImage = document.querySelector(`[data-index="${index}"]`)
-    const source = newImage.getAttribute('data-source');
-    const alt = newImage.getAttribute('alt');
-    const indexToMove = newImage.getAttribute('data-index');
+    const source = galleryArray[index].getAttribute('data-source');
+    const alt = galleryArray[index].getAttribute('alt');
+    const indexToMove = galleryArray[index].getAttribute('data-index');
 
     setImgAttributes(source, alt, indexToMove);
 }
